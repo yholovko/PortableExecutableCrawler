@@ -4,16 +4,18 @@ import crawler.Constants;
 import crawler.Database;
 import crawler.MyLinkedBlockingQueue;
 import crawler.PortableExecutableFile;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.Map;
 
 public class ProducerLinks implements Runnable {
+    static final Logger ZD_NET_LOG = Logger.getLogger("zdNetLogger");
+
     private MyLinkedBlockingQueue<PortableExecutableFile> goldenLinks;
     private Map<String, String> loginCookies;
 
@@ -28,7 +30,8 @@ public class ProducerLinks implements Runnable {
             try {
                 doc = Jsoup.connect(url).cookies(loginCookies).get();
             } catch (IOException e) {
-                System.err.println(String.format("\nReconnection to %s", url));
+                System.err.println(String.format("Reconnection to %s", url));
+                ZD_NET_LOG.warn(String.format("Reconnection to %s", url));
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
@@ -69,7 +72,7 @@ public class ProducerLinks implements Runnable {
             }
         }
 
-        System.out.println(String.format("Time: %s; URL: %s; OS: %s; goldenLinksSize: %s;", new Date(), Constants.ZD_NET_COM + pe.getUrl(), pe.getOperationSystem(), goldenLinks.size()));
+        ZD_NET_LOG.info(String.format("URL: %s; OS: %s; goldenLinksSize: %s;", pe.getUrl(), pe.getOperationSystem(), goldenLinks.size()));
 
         if (pe.getOperationSystem().equals("iOS") || pe.getOperationSystem().equals("Android") ||
                 pe.getOperationSystem().equals("Webware") || pe.getOperationSystem().contains("Mobile Windows Phone") ||
@@ -107,7 +110,7 @@ public class ProducerLinks implements Runnable {
                     String nextPageUrl = doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > div.row > div.col-6 > section > nav > ul > li").last().child(0).attr("href");
                     doc = connectTo(Constants.ZD_NET_COM + nextPageUrl);
 
-                    System.out.println("\n"+nextPageUrl);
+                    ZD_NET_LOG.info("\n"+Constants.ZD_NET_COM_DOWNLOAD+nextPageUrl);
                 } else {
                     goldenLinks.put(new PortableExecutableFile()); // LAST PAGE. 'Consumer' thread will stopped.
                     break;
