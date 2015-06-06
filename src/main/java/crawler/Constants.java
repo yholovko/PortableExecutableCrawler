@@ -1,15 +1,20 @@
 package crawler;
 
-/**
- * Created by JACOB on 05.06.2015.
- */
 public class Constants {
-    public static String zdNetCom = "http://downloads.zdnet.com/";
-    public static String zdNetComLogin = "https://secure.zdnet.com/user/login/?appId=1101";
-    public static String zdNetComDownload = "http://downloads.zdnet.com/price/all/";
+    public static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
-    public static String email = "portexcrawler@gmail.com";
-    public static String password = "portexcrawler777";
+    public static final String ZD_NET_COM = "http://downloads.zdnet.com/";
+    public static final String ZD_NET_COM_LOGIN = "https://secure.zdnet.com/user/login/?appId=1101";
+    public static final String ZD_NET_COM_DOWNLOAD = "http://downloads.zdnet.com/price/all/";
 
-    public static String tableName = "pe_file";
+    public static final String email = "portexcrawler@gmail.com";
+    public static final String password = "portexcrawler777";
+
+    //will get from command line parameters
+    public static String DB_HOST;
+    public static String DB_PORT;
+    public static String DB_USER;
+    public static String DB_PASSWORD;
+    public static String DB_NAME;
+    public static String LOCATION_TO_FILES_SAVING;
 }

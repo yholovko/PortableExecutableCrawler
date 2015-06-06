@@ -2,23 +2,23 @@ package crawler;
 
 import zdnet.com.ZDNet;
 
-/**
- * Created by JACOB on 02.06.2015.
- */
 public class Main {
-    public static void main(String[] args) {
-        if (args.length < 5) {
-            System.out.println("java -jar PortableExecutableCrawler.jar <host> <user> <passwordToDB> <databaseName> <locationToFilesSaving>");
-            System.out.println("example: java -jar PortableExecutableCrawler.jar 127.0.0.1 root root pefilesdb C:\\Users\\JACOB\\Desktop");
+    public static void main(String[] args) throws ClassNotFoundException {
+        if (args.length < 6) {
+            System.out.println("java -jar PortableExecutableCrawler.jar <dbHost> <dbPort> <dbUser> <dbPassword> <dbName> <locationToFilesSaving>");
+            System.out.println("example: java -jar PortableExecutableCrawler.jar 127.0.0.1 3306 root root pefilesdb C:\\Users\\JACOB\\Desktop");
             return;
         }
-        String host = args[0];
-        String user = args[1];
-        String passwordToDB = args[2];
-        String databaseName = args[3];
-        String locationToFilesSaving = args[4];
+        Constants.DB_HOST = args[0];
+        Constants.DB_PORT = args[1];
+        Constants.DB_USER = args[2];
+        Constants.DB_PASSWORD = args[3];
+        Constants.DB_NAME = args[4];
+        Constants.LOCATION_TO_FILES_SAVING = args[5];
 
-        Thread zdNetThread = new Thread(new ZDNet(host, user, passwordToDB, databaseName, locationToFilesSaving));
+        Class.forName(Constants.JDBC_DRIVER);
+
+        Thread zdNetThread = new Thread(new ZDNet());
         zdNetThread.start();
 
     }
