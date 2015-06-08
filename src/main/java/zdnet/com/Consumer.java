@@ -1,17 +1,19 @@
 package zdnet.com;
 
 import crawler.Constants;
+import crawler.Database;
 import crawler.MyLinkedBlockingQueue;
 import crawler.PortableExecutableFile;
 import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 public class Consumer implements Runnable {
@@ -24,10 +26,12 @@ public class Consumer implements Runnable {
     }
 
     private boolean saveFile(String fileName, URL download) {
+        new File(Constants.LOCATION_TO_FILES_SAVING).mkdirs();
+
         try (FileOutputStream fos = new FileOutputStream(Constants.LOCATION_TO_FILES_SAVING + fileName)) {
             ReadableByteChannel rbc = Channels.newChannel(download.openStream());
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-            fos.close();
+
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,6 +63,47 @@ public class Consumer implements Runnable {
         }
     }
 
+    private String hashFile(File file, String algorithm){
+        try (FileInputStream inputStream = new FileInputStream(file)) {
+            MessageDigest digest = MessageDigest.getInstance(algorithm);
+
+            byte[] bytesBuffer = new byte[1024];
+            int bytesRead = -1;
+
+            while ((bytesRead = inputStream.read(bytesBuffer)) != -1) {
+                digest.update(bytesBuffer, 0, bytesRead);
+            }
+
+            byte[] hashedBytes = digest.digest();
+
+            return convertByteArrayToHexString(hashedBytes);
+        } catch (NoSuchAlgorithmException | IOException ex) {
+            ZD_NET_LOG.error("Could not generate hash from file", ex);
+        }
+        return "";
+    }
+
+    private String generateMD5(File file) {
+        return hashFile(file, "MD5");
+    }
+
+    private String generateSHA1(File file) {
+        return hashFile(file, "SHA-1");
+    }
+
+    private String generateSHA256(File file) {
+        return hashFile(file, "SHA-256");
+    }
+
+    private String convertByteArrayToHexString(byte[] arrayBytes) {
+        StringBuilder stringBuffer = new StringBuilder();
+        for (byte arrayByte : arrayBytes) {
+            stringBuffer.append(Integer.toString((arrayByte & 0xff) + 0x100, 16)
+                    .substring(1));
+        }
+        return stringBuffer.toString();
+    }
+
     public void run() {
         while (true) {
             try {
@@ -76,9 +121,19 @@ public class Consumer implements Runnable {
 
                         if (saveFile(filename, new URL(url))) {
                             ZD_NET_LOG.info("File " + pe.getUrl() + " downloaded");
-                            pe.setLocation(Constants.LOCATION_TO_FILES_SAVING + "/" + filename);
-                            //get MD5, SHA1, SHA256
-                            //insert to database
+                            pe.setLocation(Constants.LOCATION_TO_FILES_SAVING + filename);
+                            File file = new File(pe.getLocation());
+                            pe.setMd5(generateMD5(file));
+                            pe.setSha1(generateSHA1(file));
+                            pe.setSha256(generateSHA256(file));
+
+                            if (Database.isAppExists(pe.getMd5())){
+                                new File(pe.getLocation()).delete();
+                                ZD_NET_LOG.info(String.format("File %s already in the database. Deleted", pe.getUrl()));
+                            }else{
+                                Database.insertToDatabase(pe);
+                                ZD_NET_LOG.info(String.format("Information about %s inserted in the database", pe.getUrl()));
+                            }
                         } else {
                             ZD_NET_LOG.info("Error while downloading file " + pe.getUrl());
                         }

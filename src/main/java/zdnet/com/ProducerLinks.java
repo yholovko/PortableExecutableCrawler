@@ -85,8 +85,7 @@ public class ProducerLinks implements Runnable {
                 }
                 if (hasNext(doc)) {
                     String nextPageUrl = doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > div.row > div.col-6 > section > nav > ul > li").last().child(0).attr("href");
-                    //doc = connectTo(Constants.ZD_NET_COM + nextPageUrl);
-                    doc = ZDNet.connectTo("http://downloads.zdnet.com/price/all/96626/");
+                    doc = ZDNet.connectTo(Constants.ZD_NET_COM + nextPageUrl);
 
                     ZD_NET_LOG.info("\n\n"+Constants.ZD_NET_COM_DOWNLOAD+nextPageUrl);
                 } else {

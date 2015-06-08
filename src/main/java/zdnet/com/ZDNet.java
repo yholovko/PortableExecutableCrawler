@@ -10,7 +10,6 @@ import org.jsoup.Jsoup;
 import java.io.IOException;
 import java.util.Map;
 
-import org.apache.log4j.PropertyConfigurator;
 import org.jsoup.nodes.Document;
 
 public class ZDNet implements Runnable {
@@ -60,8 +59,6 @@ public class ZDNet implements Runnable {
     }
 
     public void run() {
-        PropertyConfigurator.configure("log4j.properties");
-
         ZD_NET_LOG.info("Authorization...");
         login();
 
