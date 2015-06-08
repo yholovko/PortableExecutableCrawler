@@ -21,7 +21,6 @@ public class Main {
     public static void main(String[] args) throws ClassNotFoundException {
         PropertyConfigurator.configure("log4j.properties");
 
-
         if (args.length < 6) {
             System.out.println("java -jar PortableExecutableCrawler.jar <dbHost> <dbPort> <dbUser> <dbPassword> <dbName> <locationToFilesSaving>");
             System.out.println("example: java -jar PortableExecutableCrawler.jar 127.0.0.1 3306 root root pefilesdb C:\\Users\\JACOB\\Desktop\\");
