@@ -25,40 +25,48 @@ public class ProducerLinks implements Runnable {
 
         Document doc = ZDNet.connectTo(Constants.ZD_NET_COM + peUrl);
 
-        pe.setUrl(Constants.ZD_NET_COM + peUrl);
-        pe.setName(doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > article > header > h1").text());
-        pe.setCategory(doc.select("#breadcrumb > ul > li:nth-child(3) > a").text());
-        pe.setDescription(doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > article > section > div.storyBody").text());
+        if (doc != null) {
+            pe.setUrl(Constants.ZD_NET_COM + peUrl);
+            pe.setName(doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > article > header > h1").text());
+            pe.setCategory(doc.select("#breadcrumb > ul > li:nth-child(3) > a").text());
+            pe.setDescription(doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > article > section > div.storyBody").text());
 
-        Elements details = doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > article > table > tbody > tr");
-        for (Element detail : details) {
-            switch (detail.select("th").text()) {
-                case "License":
-                    pe.setLicense(detail.select("td").text());
-                    break;
-                case "Version":
-                    pe.setVersion(detail.select("td").text());
-                    break;
-                case "Operating System":
-                    pe.setOperationSystem(detail.select("td").text());
-                    break;
-                case "System Requirements":
-                    pe.setSystemRequirements(detail.select("td").text());
-                    break;
+            Elements details = doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > article > table > tbody > tr");
+            for (Element detail : details) {
+                switch (detail.select("th").text()) {
+                    case "License":
+                        pe.setLicense(detail.select("td").text());
+                        break;
+                    case "Version":
+                        pe.setVersion(detail.select("td").text());
+                        break;
+                    case "Operating System":
+                        pe.setOperationSystem(detail.select("td").text());
+                        break;
+                    case "System Requirements":
+                        pe.setSystemRequirements(detail.select("td").text());
+                        break;
+                }
             }
+        } else {
+            return null;
         }
-
-        ZD_NET_LOG.info(String.format("<URL>: %s; <OS>: %s; <QUEUE>: %s;", pe.getUrl(), pe.getOperationSystem(), goldenLinks.size()));
 
         if (pe.getOperationSystem().equals("iOS") || pe.getOperationSystem().equals("Android") ||
                 pe.getOperationSystem().equals("Webware") || pe.getOperationSystem().contains("Mobile Windows Phone") ||
                 pe.getOperationSystem().contains("Playstation")) {
+            ZD_NET_LOG.info(String.format("<URL>: %s; <OS>: %s; <STATUS>: IGNORED; <QUEUE>: %s;", pe.getUrl(), pe.getOperationSystem(), goldenLinks.size()));
+
             return null;
         }
 
         if (Database.containsUrlAndVersion(pe.getUrl(), pe.getVersion())) {
+            ZD_NET_LOG.info(String.format("<URL>: %s; <OS>: %s; <STATUS>: IGNORED (already in the database); <QUEUE>: %s;", pe.getUrl(), pe.getOperationSystem(), goldenLinks.size()));
+
             return null;
         }
+
+        ZD_NET_LOG.info(String.format("<URL>: %s; <OS>: %s; <STATUS>: PROCESSING; <QUEUE>: %s;", pe.getUrl(), pe.getOperationSystem(), goldenLinks.size()));
 
         return pe;
     }
@@ -71,25 +79,29 @@ public class ProducerLinks implements Runnable {
     public void run() {
         try {
             Document doc = ZDNet.connectTo(Constants.ZD_NET_COM_DOWNLOAD);
-            ZD_NET_LOG.info("\n\n"+Constants.ZD_NET_COM_DOWNLOAD);
+            ZD_NET_LOG.info("\n\n" + Constants.ZD_NET_COM_DOWNLOAD);
 
             while (true) {
-                Elements links = doc.getElementsByAttributeValueContaining("class", "downloads item");
-                for (Element link : links) {
-                    PortableExecutableFile goldenPe = isValid(link);
-                    if (goldenPe != null) {
-                        if (!goldenLinks.containsByUrl(goldenPe)) {
-                            goldenLinks.put(goldenPe);
+                if (doc != null) {
+                    Elements links = doc.getElementsByAttributeValueContaining("class", "downloads item");
+                    for (Element link : links) {
+                        PortableExecutableFile goldenPe = isValid(link);
+                        if (goldenPe != null) {
+                            if (!goldenLinks.containsByUrl(goldenPe)) {
+                                goldenLinks.put(goldenPe);
+                            }
                         }
                     }
-                }
-                if (hasNext(doc)) {
-                    String nextPageUrl = doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > div.row > div.col-6 > section > nav > ul > li").last().child(0).attr("href");
-                    doc = ZDNet.connectTo(Constants.ZD_NET_COM + nextPageUrl);
+                    if (hasNext(doc)) {
+                        String nextPageUrl = doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > div.row > div.col-6 > section > nav > ul > li").last().child(0).attr("href");
+                        doc = ZDNet.connectTo(Constants.ZD_NET_COM + nextPageUrl);
 
-                    ZD_NET_LOG.info("\n\n"+Constants.ZD_NET_COM_DOWNLOAD+nextPageUrl);
+                        ZD_NET_LOG.info("\n\n" + Constants.ZD_NET_COM_DOWNLOAD + nextPageUrl);
+                    } else {
+                        goldenLinks.put(new PortableExecutableFile()); // LAST PAGE. 'Consumer' thread will stopped.
+                        break;
+                    }
                 } else {
-                    goldenLinks.put(new PortableExecutableFile()); // LAST PAGE. 'Consumer' thread will stopped.
                     break;
                 }
             }

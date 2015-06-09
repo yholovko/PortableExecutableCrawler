@@ -12,7 +12,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
-import java.nio.file.ClosedDirectoryStreamException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -37,6 +36,7 @@ public class Consumer implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
             ZD_NET_LOG.error(e);
+            new File(Constants.LOCATION_TO_FILES_SAVING + fileName).delete();
         }
 
         return false;
@@ -64,12 +64,12 @@ public class Consumer implements Runnable {
         }
     }
 
-    private String hashFile(File file, String algorithm){
+    private String hashFile(File file, String algorithm) {
         try (FileInputStream inputStream = new FileInputStream(file)) {
             MessageDigest digest = MessageDigest.getInstance(algorithm);
 
             byte[] bytesBuffer = new byte[1024];
-            int bytesRead = -1;
+            int bytesRead;
 
             while ((bytesRead = inputStream.read(bytesBuffer)) != -1) {
                 digest.update(bytesBuffer, 0, bytesRead);
@@ -112,34 +112,36 @@ public class Consumer implements Runnable {
                 if (!pe.getUrl().equals("")) {
                     Document doc = ZDNet.connectTo(pe.getUrl() + "download/");
 
-                    String url = doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > article > div.storyBody > p.quiet > a").attr("href");
-                    String extension = getExtension(url);
+                    if (doc != null) {
+                        String url = doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > article > div.storyBody > p.quiet > a").attr("href");
+                        String extension = getExtension(url);
 
-                    if (extension.length() == 4 && !extension.equals(".htm")) {
-                        String filename = getValidNameForFS(pe.getName()) + new Date().getTime() + extension;
+                        if (extension.length() == 4 && !extension.equals(".htm")) {
+                            String filename = getValidNameForFS(pe.getName()) + new Date().getTime() + extension;
 
-                        ZD_NET_LOG.info("Start to download file " + pe.getUrl());
+                            ZD_NET_LOG.info("Start to download file " + pe.getUrl());
 
-                        if (saveFile(filename, new URL(url))) {
-                            ZD_NET_LOG.info("File " + pe.getUrl() + " downloaded");
-                            pe.setLocation(Constants.LOCATION_TO_FILES_SAVING + filename);
-                            File file = new File(pe.getLocation());
-                            pe.setMd5(generateMD5(file));
-                            pe.setSha1(generateSHA1(file));
-                            pe.setSha256(generateSHA256(file));
+                            if (saveFile(filename, new URL(url))) {
+                                ZD_NET_LOG.info("File " + pe.getUrl() + " downloaded");
+                                pe.setLocation(Constants.LOCATION_TO_FILES_SAVING + filename);
+                                File file = new File(pe.getLocation());
+                                pe.setMd5(generateMD5(file));
+                                pe.setSha1(generateSHA1(file));
+                                pe.setSha256(generateSHA256(file));
 
-                            if (Database.isAppExists(pe.getMd5())){
-                                new File(pe.getLocation()).delete();
-                                ZD_NET_LOG.info(String.format("File %s already in the database. Deleted", pe.getUrl()));
-                            }else{
-                                Database.insertToDatabase(pe);
-                                ZD_NET_LOG.info(String.format("Information about %s inserted in the database", pe.getUrl()));
+                                if (Database.isAppExists(pe.getMd5())) {
+                                    new File(pe.getLocation()).delete();
+                                    ZD_NET_LOG.info(String.format("File %s already in the database. Deleted", pe.getUrl()));
+                                } else {
+                                    Database.insertToDatabase(pe);
+                                    ZD_NET_LOG.info(String.format("Information about %s inserted in the database", pe.getUrl()));
+                                }
+                            } else {
+                                ZD_NET_LOG.info("Error while downloading file " + pe.getUrl());
                             }
-                        } else {
-                            ZD_NET_LOG.info("Error while downloading file " + pe.getUrl());
+                        } else { // not the PE file. The 'download' button is redirect to Google Play, Amazon, Apple Store etc....
+                            ZD_NET_LOG.info(String.format("WARNING. %s ISN'T a PE file. Link for downloading: %s", pe.getUrl(), url));
                         }
-                    } else { // not the PE file. The 'download' button is redirect to Google Play, Amazon, Apple Store etc....
-                        ZD_NET_LOG.info(String.format("WARNING. %s ISN'T a PE file. Link for downloading: %s", pe.getUrl(), url));
                     }
                 } else {
                     return; //last element

@@ -5,6 +5,7 @@ import crawler.MyLinkedBlockingQueue;
 import crawler.PortableExecutableFile;
 import org.apache.log4j.Logger;
 import org.jsoup.Connection;
+import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class ZDNet implements Runnable {
 
     private static Map<String, String> loginCookies;
 
-    private MyLinkedBlockingQueue<PortableExecutableFile> goldenLinks = new MyLinkedBlockingQueue<PortableExecutableFile>();
+    private MyLinkedBlockingQueue<PortableExecutableFile> goldenLinks = new MyLinkedBlockingQueue<>();
 
     private void login() {
         Connection.Response res = null;
@@ -46,6 +47,13 @@ public class ZDNet implements Runnable {
             try {
                 doc = Jsoup.connect(url).cookies(loginCookies).get();
             } catch (IOException e) {
+                if (e instanceof HttpStatusException) {
+                    if (((HttpStatusException) e).getStatusCode() == 404) {
+                        ZD_NET_LOG.warn(String.format("Page not found 404. %s", url));
+                        return null;
+                    }
+                }
+
                 ZD_NET_LOG.warn(String.format("Reconnection to %s", url));
                 try {
                     Thread.sleep(2000);
