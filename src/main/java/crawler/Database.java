@@ -21,6 +21,7 @@ public class Database {
                 }
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             ZD_NET_LOG.error(e);
         }
         return false;
@@ -38,6 +39,7 @@ public class Database {
                 }
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             ZD_NET_LOG.error(e);
         }
         return false;
@@ -61,6 +63,7 @@ public class Database {
 
             ps.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             ZD_NET_LOG.error(e);
         }
     }

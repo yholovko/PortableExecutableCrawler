@@ -58,7 +58,6 @@ public class ZDNet implements Runnable {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
-                    e1.printStackTrace();
                     ZD_NET_LOG.error(e1);
                 }
             }

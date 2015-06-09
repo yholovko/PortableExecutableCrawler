@@ -34,7 +34,6 @@ public class Consumer implements Runnable {
 
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
             ZD_NET_LOG.error(e);
             new File(Constants.LOCATION_TO_FILES_SAVING + fileName).delete();
         }
@@ -116,7 +115,7 @@ public class Consumer implements Runnable {
                         String url = doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > article > div.storyBody > p.quiet > a").attr("href");
                         String extension = getExtension(url);
 
-                        if (extension.length() == 4 && !extension.equals(".htm")) {
+                        if (extension.length() == 4 && !extension.equals(".htm") && !extension.equals(".php")) {
                             String filename = getValidNameForFS(pe.getName()) + new Date().getTime() + extension;
 
                             ZD_NET_LOG.info("Start to download file " + pe.getUrl());
@@ -137,10 +136,10 @@ public class Consumer implements Runnable {
                                     ZD_NET_LOG.info(String.format("Information about %s inserted in the database", pe.getUrl()));
                                 }
                             } else {
-                                ZD_NET_LOG.info("Error while downloading file " + pe.getUrl());
+                                ZD_NET_LOG.error("Error while downloading file " + pe.getUrl());
                             }
                         } else { // not the PE file. The 'download' button is redirect to Google Play, Amazon, Apple Store etc....
-                            ZD_NET_LOG.info(String.format("WARNING. %s ISN'T a PE file. Link for downloading: %s", pe.getUrl(), url));
+                            ZD_NET_LOG.warn(String.format("%s isn't a PE file. Link for downloading: %s", pe.getUrl(), url));
                         }
                     }
                 } else {
