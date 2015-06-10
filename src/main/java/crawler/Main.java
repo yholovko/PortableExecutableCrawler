@@ -20,7 +20,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws ClassNotFoundException {
-        PropertyConfigurator.configure("log4j.properties");
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        PropertyConfigurator.configure(classLoader.getResource("log4j.properties"));
 
         if (args.length < 6) {
             System.out.println("java -jar PortableExecutableCrawler.jar <dbHost> <dbPort> <dbUser> <dbPassword> <dbName> <locationToFilesSaving>");

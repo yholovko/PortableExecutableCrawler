@@ -25,6 +25,7 @@ public class ProducerLinks implements Runnable {
 
         Document doc = CNet.connectTo(peUrl);
 
+
         if (doc != null) {
             pe.setUrl(peUrl);
             pe.setName(doc.select("#content-body-product-single > h1 > span").text());
@@ -34,7 +35,9 @@ public class ProducerLinks implements Runnable {
             pe.setVersion(doc.select("#product-upper-container > div.quick-specs-container > ul.one > li:nth-child(1) > div.product-landing-quick-specs-row-content").text());
             pe.setOperationSystem(doc.select("#product-upper-container > div.quick-specs-container > ul.two > li:nth-child(3) > div.product-landing-quick-specs-row-content.OneLinkNoTx").text());
 
-            pe.setDownloadUrl(doc.select("#product-upper-container > div.button-ratings-container > div.button > div > div.download-now.title-detail-button-dln > a").attr("href"));
+            if (!doc.select("#product-upper-container > div.button-ratings-container > div.button > div > div.download-now.offsite-visitSite.offsite-wp.title-detail-button-dln > a > span.dln-cta.visit-now").text().equals("Visit Site")) {
+                pe.setDownloadUrl(doc.select("#product-upper-container > div.button-ratings-container > div.button > div > div.download-now.title-detail-button-dln > a").attr("href"));
+            }
         } else {
             return null;
         }
@@ -58,7 +61,7 @@ public class ProducerLinks implements Runnable {
 
     private boolean hasNext(Document doc) {
         Elements next = doc.select("#listing-product-list > li.listing-bar > div.listing-bar-right > div > ul > li.next > a");
-        return next.last().text().equals("Next");
+        return next.text().equals("Next");
     }
 
     private Elements getCategories(Document doc) {
