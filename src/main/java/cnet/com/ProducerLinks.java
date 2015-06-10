@@ -39,7 +39,7 @@ public class ProducerLinks implements Runnable {
             return null;
         }
 
-        if (pe.getDownloadUrl().equals("")){
+        if (pe.getDownloadUrl().equals("")) {
             C_NET_LOG.info(String.format("Can not download the file %s;", pe.getUrl()));
 
             return null;
