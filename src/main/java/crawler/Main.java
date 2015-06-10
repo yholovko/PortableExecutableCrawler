@@ -41,8 +41,8 @@ public class Main {
         }
 
         if (checkDatabaseConnection()) {
-            //Thread zdNetThread = new Thread(new ZDNet());
-            //zdNetThread.start();
+            Thread zdNetThread = new Thread(new ZDNet());
+            zdNetThread.start();
 
             Thread cNetThread = new Thread(new CNet());
             cNetThread.start();

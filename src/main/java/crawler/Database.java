@@ -7,6 +7,7 @@ import java.sql.*;
 
 public class Database {
     static final Logger ZD_NET_LOG = Logger.getLogger("zdNetLogger");
+    static final Logger C_NET_LOG = Logger.getLogger("cNetLogger");
 
     public static boolean containsUrlAndVersion(String url, String version) {
         String sql = "SELECT count(id) FROM pe_file WHERE url=? AND version=?";
@@ -23,6 +24,7 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
             ZD_NET_LOG.error(e);
+            C_NET_LOG.error(e);
         }
         return false;
     }
@@ -40,7 +42,7 @@ public class Database {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            ZD_NET_LOG.error(e);
+            C_NET_LOG.error(e);
         }
         return false;
     }
@@ -65,6 +67,7 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
             ZD_NET_LOG.error(e);
+            C_NET_LOG.error(e);
         }
     }
 }
