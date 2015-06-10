@@ -1,5 +1,6 @@
 package crawler;
 
+import cnet.com.CNet;
 import org.apache.log4j.PropertyConfigurator;
 import zdnet.com.ZDNet;
 
@@ -40,8 +41,11 @@ public class Main {
         }
 
         if (checkDatabaseConnection()) {
-            Thread zdNetThread = new Thread(new ZDNet());
-            zdNetThread.start();
+            //Thread zdNetThread = new Thread(new ZDNet());
+            //zdNetThread.start();
+
+            Thread cNetThread = new Thread(new CNet());
+            cNetThread.start();
         }
     }
 }

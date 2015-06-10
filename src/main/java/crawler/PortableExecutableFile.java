@@ -17,6 +17,16 @@ public class PortableExecutableFile {
     private String sha1 = "";
     private String sha256 = "";
 
+    private String downloadUrl = "";
+
+    public String getDownloadUrl() {
+        return downloadUrl;
+    }
+
+    public void setDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl;
+    }
+
     public void setUrl(String url) {
         this.url = url;
     }

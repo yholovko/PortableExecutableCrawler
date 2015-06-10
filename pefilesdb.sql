@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `pe_file` (
   `name` varchar(300) NOT NULL,
   `category` varchar(100) NOT NULL,
   `description` text,
-  `license` enum('FREE','FREE TO TRY','PURCHASE','UPDATE') NOT NULL,
+  `license` varchar(200) NOT NULL,
   `version` varchar(100) DEFAULT NULL,
   `operation_system` varchar(300) DEFAULT NULL,
   `system_requirements` varchar(200) DEFAULT NULL,

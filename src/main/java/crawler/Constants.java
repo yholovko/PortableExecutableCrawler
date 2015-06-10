@@ -7,6 +7,9 @@ public class Constants {
     public static final String ZD_NET_COM_LOGIN = "https://secure.zdnet.com/user/login/?appId=1101";
     public static final String ZD_NET_COM_DOWNLOAD = "http://downloads.zdnet.com/price/all/";
 
+    public static final String CNET_COM = "http://download.cnet.com/";
+    public static final String CNET_COM_WINDOWS = "http://download.cnet.com/windows/";
+
     public static final String email = "portexcrawler@gmail.com";
     public static final String password = "portexcrawler777";
 
