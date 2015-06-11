@@ -4,7 +4,9 @@ import cnet.com.CNet;
 import org.apache.log4j.PropertyConfigurator;
 import zdnet.com.ZDNet;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Main {
 
@@ -37,7 +39,7 @@ public class Main {
 
         Class.forName(Constants.JDBC_DRIVER);
 
-        if (!Constants.LOCATION_TO_FILES_SAVING.endsWith("\\")) {
+        if (!Constants.LOCATION_TO_FILES_SAVING.endsWith("\\") && !Constants.LOCATION_TO_FILES_SAVING.endsWith("/")) {
             Constants.LOCATION_TO_FILES_SAVING += "\\";
         }
 

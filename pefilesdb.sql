@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS `pefilesdb`
+CREATE DATABASE IF NOT EXISTS `pefilesdb`;
 USE `pefilesdb`;
 
 CREATE TABLE IF NOT EXISTS `pe_file` (

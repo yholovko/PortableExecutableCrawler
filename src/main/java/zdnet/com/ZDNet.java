@@ -7,11 +7,10 @@ import org.apache.log4j.Logger;
 import org.jsoup.Connection;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.util.Map;
-
-import org.jsoup.nodes.Document;
 
 public class ZDNet implements Runnable {
     static final Logger ZD_NET_LOG = Logger.getLogger("zdNetLogger");
