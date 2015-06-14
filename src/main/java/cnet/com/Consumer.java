@@ -116,6 +116,10 @@ public class Consumer implements Runnable {
                         String url = doc.select("#pdl-manual").attr("href");
                         String extension = getExtension(url);
 
+                        if (url.contains("appid=") && pe.getOperationSystem().equals("Windows")){
+                            extension = ".exe";
+                        }
+
                         if (extension.length() == 4 && !extension.equals(".htm") && !extension.equals(".php")) {
                             String filename = getValidNameForFS(pe.getName()) + new Date().getTime() + extension;
 

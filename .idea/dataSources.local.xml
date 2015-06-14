@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - pefilesdb@localhost" uuid="b3a8e22f-733d-4bac-8abe-7c09c10cb972">
+    <data-source name="MySQL - pefilesdb@localhost" uuid="c1cf629c-6b7d-4471-8a7b-5446bf2a6183">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
       <schema-pattern>pefilesdb.*</schema-pattern>
-      <default-schemas>pefilesdb.*</default-schemas>
+      <default-schemas>information_schema.* pefilesdb.*</default-schemas>
     </data-source>
   </component>
 </project>

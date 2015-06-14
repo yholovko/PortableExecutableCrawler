@@ -25,7 +25,7 @@
         <module name="PortableExecutableCrawler" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel>
       <module name="PortableExecutableCrawler" target="1.8" />
     </bytecodeTargetLevel>
   </component>
