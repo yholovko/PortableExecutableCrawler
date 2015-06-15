@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PortableExecutableCrawler.iml" filepath="$PROJECT_DIR$/PortableExecutableCrawler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Crawlers.iml" filepath="$PROJECT_DIR$/Crawlers.iml" />
     </modules>
   </component>
 </project>

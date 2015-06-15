@@ -1053,11 +1053,32 @@ public class MyLinkedBlockingQueue<E> extends AbstractQueue<E>
      * @return
      */
 
-    public boolean containsByUrl(PortableExecutableFile o) {
+    public boolean containsByUrlPe(PortableExecutableFile o) {
         if (o == null) return false;
         fullyLock();
         try {
             for (Node<PortableExecutableFile> p = (Node<PortableExecutableFile>) head.next; p != null; p = p.next)
+                if (o.getUrl().equals(p.item.getUrl()) && o.getVersion().equals(p.item.getVersion()))
+                    return true;
+            return false;
+        } finally {
+            fullyUnlock();
+        }
+    }
+
+    /**
+     * My personal Method ONLY FOR APK CRAWLER
+     * DON'T TOUCH AND USE
+     *
+     * @param o
+     * @return
+     */
+
+    public boolean containsByUrlApk(ApkFile o) {
+        if (o == null) return false;
+        fullyLock();
+        try {
+            for (Node<ApkFile> p = (Node<ApkFile>) head.next; p != null; p = p.next)
                 if (o.getUrl().equals(p.item.getUrl()) && o.getVersion().equals(p.item.getVersion()))
                     return true;
             return false;

@@ -12,6 +12,7 @@ public class Constants {
 
     public static final String email = "portexcrawler@gmail.com";
     public static final String password = "portexcrawler777";
+    public static final String ANDROID_ID = "338df4fb3e118d80";
 
     //will get from command line parameters
     public static String DB_HOST;
@@ -19,5 +20,6 @@ public class Constants {
     public static String DB_USER;
     public static String DB_PASSWORD;
     public static String DB_NAME;
-    public static String LOCATION_TO_FILES_SAVING;
+    public static String LOCATION_TO_FILES_SAVING_PE;
+    public static String LOCATION_TO_FILES_SAVING_APK;
 }

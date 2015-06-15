@@ -9,7 +9,7 @@ public class Database {
     static final Logger ZD_NET_LOG = Logger.getLogger("zdNetLogger");
     static final Logger C_NET_LOG = Logger.getLogger("cNetLogger");
 
-    public static boolean containsUrlAndVersion(String url, String version) {
+    public static boolean containsUrlAndVersionPE(String url, String version) {
         String sql = "SELECT count(id) FROM pe_file WHERE url=? AND version=?";
         try (Connection conn = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s", Constants.DB_HOST, Constants.DB_PORT, Constants.DB_NAME), Constants.DB_USER, Constants.DB_PASSWORD); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, url);
@@ -29,7 +29,7 @@ public class Database {
         return false;
     }
 
-    public static boolean isAppExists(String md5) {
+    public static boolean isAppExistsPE(String md5) {
         String sql = "SELECT count(id) FROM pe_file WHERE md5=?";
         try (Connection conn = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s", Constants.DB_HOST, Constants.DB_PORT, Constants.DB_NAME), Constants.DB_USER, Constants.DB_PASSWORD); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, md5);
@@ -47,7 +47,7 @@ public class Database {
         return false;
     }
 
-    public static void insertToDatabase(PortableExecutableFile pe) {
+    public static void insertToDatabasePE(PortableExecutableFile pe) {
         String sql = "INSERT INTO `pe_file` (`url`, `location`, `name`, `category`, `description`, `license`, `version`, `operation_system`, `system_requirements`, `md5`, `sha1`, `sha256`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         try (Connection conn = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s", Constants.DB_HOST, Constants.DB_PORT, Constants.DB_NAME), Constants.DB_USER, Constants.DB_PASSWORD); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, pe.getUrl());

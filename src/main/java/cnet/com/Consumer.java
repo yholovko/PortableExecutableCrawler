@@ -27,16 +27,16 @@ public class Consumer implements Runnable {
     }
 
     private boolean saveFile(String fileName, URL download) {
-        new File(Constants.LOCATION_TO_FILES_SAVING).mkdirs();
+        new File(Constants.LOCATION_TO_FILES_SAVING_PE).mkdirs();
 
-        try (FileOutputStream fos = new FileOutputStream(Constants.LOCATION_TO_FILES_SAVING + fileName)) {
+        try (FileOutputStream fos = new FileOutputStream(Constants.LOCATION_TO_FILES_SAVING_PE + fileName)) {
             ReadableByteChannel rbc = Channels.newChannel(download.openStream());
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
 
             return true;
         } catch (IOException e) {
             C_NET_LOG.error(e);
-            new File(Constants.LOCATION_TO_FILES_SAVING + fileName).delete();
+            new File(Constants.LOCATION_TO_FILES_SAVING_PE + fileName).delete();
         }
 
         return false;
@@ -127,17 +127,17 @@ public class Consumer implements Runnable {
 
                             if (saveFile(filename, new URL(url))) {
                                 C_NET_LOG.info("File " + pe.getUrl() + " downloaded");
-                                pe.setLocation(Constants.LOCATION_TO_FILES_SAVING + filename);
+                                pe.setLocation(Constants.LOCATION_TO_FILES_SAVING_PE + filename);
                                 File file = new File(pe.getLocation());
                                 pe.setMd5(generateMD5(file));
                                 pe.setSha1(generateSHA1(file));
                                 pe.setSha256(generateSHA256(file));
 
-                                if (Database.isAppExists(pe.getMd5())) {
+                                if (Database.isAppExistsPE(pe.getMd5())) {
                                     new File(pe.getLocation()).delete();
                                     C_NET_LOG.info(String.format("File %s already in the database. Deleted", pe.getUrl()));
                                 } else {
-                                    Database.insertToDatabase(pe);
+                                    Database.insertToDatabasePE(pe);
                                     C_NET_LOG.info(String.format("Information about %s inserted in the database", pe.getUrl()));
                                 }
                             } else {

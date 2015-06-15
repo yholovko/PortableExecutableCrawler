@@ -48,7 +48,7 @@ public class ProducerLinks implements Runnable {
             return null;
         }
 
-        if (Database.containsUrlAndVersion(pe.getUrl(), pe.getVersion())) {
+        if (Database.containsUrlAndVersionPE(pe.getUrl(), pe.getVersion())) {
             C_NET_LOG.info(String.format("<URL>: %s; <OS>: %s; <STATUS>: IGNORED (already in the database); <QUEUE>: %s;", pe.getUrl(), pe.getOperationSystem(), goldenLinks.size()));
 
             return null;
@@ -82,7 +82,7 @@ public class ProducerLinks implements Runnable {
                         for (Element link : links) {
                             PortableExecutableFile goldenPe = isValid(link);
                             if (goldenPe != null) {
-                                if (!goldenLinks.containsByUrl(goldenPe)) {
+                                if (!goldenLinks.containsByUrlPe(goldenPe)) {
                                     goldenLinks.put(goldenPe);
                                 }
                             }
