@@ -22,11 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="Crawlers" />
         <module name="PortableExecutableCrawler" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PortableExecutableCrawler" target="1.8" />
+      <module name="Crawlers" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

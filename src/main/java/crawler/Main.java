@@ -1,9 +1,7 @@
 package crawler;
 
-import cnet.com.CNet;
 import googleplay.com.GooglePlay;
 import org.apache.log4j.PropertyConfigurator;
-import zdnet.com.ZDNet;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -39,6 +37,8 @@ public class Main {
         Constants.DB_NAME = args[4];
         Constants.LOCATION_TO_FILES_SAVING_PE = args[5];
         Constants.LOCATION_TO_FILES_SAVING_APK = args[6];
+        Constants.PROXY_HOST = args[7];
+        Constants.PROXY_PORT = args[8];
 
         Class.forName(Constants.JDBC_DRIVER);
 
@@ -51,12 +51,11 @@ public class Main {
         }
 
         if (checkDatabaseConnection()) {
-            Thread zdNetThread = new Thread(new ZDNet());
-            zdNetThread.start();
-
-            Thread cNetThread = new Thread(new CNet());
-            cNetThread.start();
-
+//            Thread zdNetThread = new Thread(new ZDNet());
+//            zdNetThread.start();
+//
+//            Thread cNetThread = new Thread(new CNet());
+//            cNetThread.start();
             Thread googlePlayThread = new Thread(new GooglePlay());
             googlePlayThread.start();
         }

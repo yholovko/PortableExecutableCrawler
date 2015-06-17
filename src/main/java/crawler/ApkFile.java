@@ -1,5 +1,7 @@
 package crawler;
 
+import java.util.List;
+
 public class ApkFile {
     private String url = "";
     private String location = "";
@@ -11,14 +13,14 @@ public class ApkFile {
     private String sha1 = "";
     private String sha256 = "";
 
-    private String downloadUrl = "";
+    private List<String> similarAppsUrl;
 
-    public String getDownloadUrl() {
-        return downloadUrl;
+    public List<String> getSimilarAppsUrl() {
+        return similarAppsUrl;
     }
 
-    public void setDownloadUrl(String downloadUrl) {
-        this.downloadUrl = downloadUrl;
+    public void setSimilarAppsUrl(List<String> similarAppsUrl) {
+        this.similarAppsUrl = similarAppsUrl;
     }
 
     public void setUrl(String url) {
@@ -91,5 +93,10 @@ public class ApkFile {
 
     public String getSha256() {
         return sha256;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Name: %s; Category: %s; Version: %s; Description: %s;", getName(), getCategory(), getVersion(), getDescription());
     }
 }
