@@ -9,6 +9,15 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
+    <repositories>
+        <repository>
+            <id>project_lib</id>
+            <name>Repository in project's lib dir</name>
+            <layout>default</layout>
+            <url>file://${basedir}/lib</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.jsoup</groupId>
@@ -50,6 +59,12 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-server</artifactId>
             <version>2.46.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.onyxbits.raccoon</groupId>
+            <artifactId>downloader</artifactId>
+            <version>3.5</version>
         </dependency>
 
     </dependencies>

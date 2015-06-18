@@ -63,6 +63,6 @@
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:jetty-rc-repacked:5" level="project" />
     <orderEntry type="library" name="Maven: net.jcip:jcip-annotations:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.8" level="project" />
-    <orderEntry type="library" name="raccoon-3.5-jar-with-dependencies" level="project" />
+    <orderEntry type="library" name="Maven: de.onyxbits.raccoon:downloader:3.5" level="project" />
   </component>
 </module>
