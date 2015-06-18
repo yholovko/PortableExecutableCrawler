@@ -103,5 +103,6 @@ public class Constants {
     public static String LOCATION_TO_FILES_SAVING_APK;
     public static String PROXY_HOST;
     public static String PROXY_PORT;
+    public static int DEEP_FOR_SIMILAR;
 
 }

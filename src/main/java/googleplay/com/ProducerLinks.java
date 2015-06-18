@@ -122,7 +122,7 @@ public class ProducerLinks implements Runnable {
                     e.printStackTrace();
                 }
             }
-            getApkFiles(elements, 5);
+            getApkFiles(elements, Constants.DEEP_FOR_SIMILAR);
 
             APK_LOG.info(String.format("FINAL RESULT: Got %s applications from '%s' category", linksFromCategory, category));
         }
