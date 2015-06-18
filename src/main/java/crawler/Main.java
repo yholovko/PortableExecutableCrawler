@@ -72,8 +72,6 @@ public class Main {
         writer.println("proxyport=" + Constants.PROXY_PORT);
         writer.close();
 
-        Runtime.getRuntime().exec("attrib +H "+file.getAbsolutePath()); //hide 'credentials.cfg' file
-
         if (checkDatabaseConnection()) {
             Thread zdNetThread = new Thread(new ZDNet());
             zdNetThread.start();

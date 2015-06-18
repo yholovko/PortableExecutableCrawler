@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `pe_file` (
 
 CREATE TABLE IF NOT EXISTS `apk_file` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(100) NOT NULL,
+  `url` varchar(200) NOT NULL,
   `location` varchar(300) NOT NULL,
   `name` varchar(300) NOT NULL,
   `category` varchar(100) NOT NULL,

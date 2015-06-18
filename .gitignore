@@ -17,3 +17,4 @@ hs_err_pid*
 
 logs
 .idea
+!src/main/resources/raccoon-3.5-jar-with-dependencies.jar
