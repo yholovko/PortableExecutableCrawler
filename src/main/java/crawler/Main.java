@@ -29,9 +29,9 @@ public class Main {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         PropertyConfigurator.configure(classLoader.getResource("log4j.properties"));
 
-        if (args.length < 6) {
-            System.out.println("java -jar PortableExecutableCrawler.jar <dbHost> <dbPort> <dbUser> <dbPassword> <dbName> <locationToFilesSavingPe> <locationToFilesSavingApk>");
-            System.out.println("example: java -jar PortableExecutableCrawler.jar 127.0.0.1 3306 root root apk_pe_db C:\\Users\\Jacob\\Desktop\\pefiles\\ C:\\Users\\Jacob\\Desktop\\apkfiles\\");
+        if (args.length < 9) {
+            System.out.println("java -jar PortableExecutableCrawler.jar <dbHost> <dbPort> <dbUser> <dbPassword> <dbName> <locationToFilesSavingPe> <locationToFilesSavingApk> <proxyHost> <proxyPort>");
+            System.out.println("example: java -jar PortableExecutableCrawler.jar 127.0.0.1 3306 root root apk_pe_db C:\\Users\\Jacob\\Desktop\\pefiles\\ C:\\Users\\Jacob\\Desktop\\apkfiles\\ 40.141.126.178 8080");
             return;
         }
 

@@ -64,18 +64,12 @@ public class ProducerLinks implements Runnable {
         return next.text().equals("Next");
     }
 
-    private Elements getCategories(Document doc) {
-        return doc.select("#main > div > dl.catNav.catFly > dd > a");
-    }
-
     public void run() {
         try {
-            Document doc = CNet.connectTo(Constants.CNET_COM_WINDOWS);
             C_NET_LOG.info("\n\n" + Constants.CNET_COM_WINDOWS);
 
-            for (Element category : getCategories(doc)) {
-                doc = CNet.connectTo(category.attr("href")); //select directory
-
+            for (String category : Constants.CATEGORIES_CNET) {
+                Document doc = CNet.connectTo(category); //select directory
                 while (true) {
                     if (doc != null) {
                         Elements links = doc.select("#listing-product-list > li > div.result-info > div.result-name > a");

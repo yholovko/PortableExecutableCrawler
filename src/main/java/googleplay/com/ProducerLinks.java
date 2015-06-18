@@ -95,7 +95,7 @@ public class ProducerLinks implements Runnable {
 
     @Override
     public void run() {
-        for (String category : Constants.CATEGORIES) {
+        for (String category : Constants.CATEGORIES_GOOGLE) {
             WebDriver driver = GooglePlay.connectTo(Constants.GOOGLEPLAY_COM + category, true);
 
             APK_LOG.info(String.format("Connected to %s", Constants.GOOGLEPLAY_COM + category));

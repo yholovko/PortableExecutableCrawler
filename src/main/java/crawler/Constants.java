@@ -16,7 +16,32 @@ public class Constants {
     public static final String password = "portexcrawler777";
     public static final String ANDROID_ID = "36b5e85b9970a533";
 
-    public static final String[] CATEGORIES = {
+    public static final String[] CATEGORIES_CNET = {
+            "http://download.cnet.com/windows/security-software/",
+            "http://download.cnet.com/windows/browsers/",
+            "http://download.cnet.com/windows/business-software/",
+            "http://download.cnet.com/windows/communications/",
+            "http://download.cnet.com/windows/desktop-enhancements/",
+            "http://download.cnet.com/windows/developer-tools/",
+            "http://download.cnet.com/windows/digital-photo-software/",
+            "http://download.cnet.com/windows/drivers/",
+            "http://download.cnet.com/windows/educational-software/",
+            "http://download.cnet.com/windows/entertainment-software/",
+            "http://download.cnet.com/windows/3150-2012_4-0.html",
+            "http://download.cnet.com/windows/graphic-design-software/",
+            "http://download.cnet.com/windows/home-software/",
+            "http://download.cnet.com/windows/internet-software/",
+            "http://download.cnet.com/windows/itunes-and-ipod-software/",
+            "http://download.cnet.com/windows/mp3-and-audio-software/",
+            "http://download.cnet.com/windows/networking-software/",
+            "http://download.cnet.com/windows/productivity-software/",
+            "http://download.cnet.com/windows/screensavers-and-wallpaper/",
+            "http://download.cnet.com/windows/travel/",
+            "http://download.cnet.com/windows/utilities-and-operating-systems/",
+            "http://download.cnet.com/windows/video-software/"
+    };
+
+    public static final String[] CATEGORIES_GOOGLE = {
             "/store/apps/category/BOOKS_AND_REFERENCE/collection/topselling_free",
             "/store/apps/category/BUSINESS/collection/topselling_free",
             "/store/apps/category/COMICS/collection/topselling_free",
