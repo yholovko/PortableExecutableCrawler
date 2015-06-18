@@ -25,6 +25,12 @@
         <module name="Crawlers" />
         <module name="PortableExecutableCrawler" />
       </profile>
+      <profile default="false" name="Annotation profile for raccoon" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Crawlers" target="1.8" />

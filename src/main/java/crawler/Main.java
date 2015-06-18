@@ -1,8 +1,13 @@
 package crawler;
 
+import cnet.com.CNet;
 import googleplay.com.GooglePlay;
 import org.apache.log4j.PropertyConfigurator;
+import zdnet.com.ZDNet;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,7 +25,7 @@ public class Main {
         return false;
     }
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) throws ClassNotFoundException, IOException {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         PropertyConfigurator.configure(classLoader.getResource("log4j.properties"));
 
@@ -50,12 +55,31 @@ public class Main {
             Constants.LOCATION_TO_FILES_SAVING_APK += "\\";
         }
 
+        //create file with credentials
+        File file = new File(Constants.LOCATION_TO_FILES_SAVING_APK+"credentials.cfg");
+        if (file.exists()){
+            file.delete();
+        }
+        file.getParentFile().mkdirs();
+        file.createNewFile();
+
+        PrintWriter writer = new PrintWriter(file, "UTF-8");
+        writer.println("androidid=" + Constants.ANDROID_ID);
+        writer.println("userid=" + Constants.email);
+        writer.println("password=" + Constants.password);
+        writer.println("proxyhost=" + Constants.PROXY_HOST);
+        writer.println("proxyport=" + Constants.PROXY_PORT);
+        writer.close();
+
+        Runtime.getRuntime().exec("attrib +H "+file.getAbsolutePath()); //hide 'credentials.cfg' file
+
         if (checkDatabaseConnection()) {
-//            Thread zdNetThread = new Thread(new ZDNet());
-//            zdNetThread.start();
-//
-//            Thread cNetThread = new Thread(new CNet());
-//            cNetThread.start();
+            Thread zdNetThread = new Thread(new ZDNet());
+            zdNetThread.start();
+
+            Thread cNetThread = new Thread(new CNet());
+            cNetThread.start();
+
             Thread googlePlayThread = new Thread(new GooglePlay());
             googlePlayThread.start();
         }

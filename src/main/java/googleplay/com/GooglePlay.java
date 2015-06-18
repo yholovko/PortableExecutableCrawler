@@ -40,7 +40,7 @@ public class GooglePlay implements Runnable {
         Thread getLinksThread = new Thread(new ProducerLinks(goldenLinks));
         getLinksThread.start();
 
-//        Thread downloadApkThread = new Thread(new Consumer(goldenLinks));
-//        downloadApkThread.start();
+        Thread downloadApkThread = new Thread(new Consumer(goldenLinks));
+        downloadApkThread.start();
     }
 }

@@ -1,6 +1,9 @@
 package googleplay.com;
 
-import crawler.*;
+import crawler.ApkFile;
+import crawler.Constants;
+import crawler.Database;
+import crawler.MyLinkedBlockingQueue;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -38,6 +41,7 @@ public class ProducerLinks implements Runnable {
         apkFile.setDescription(doc.select("div.show-more-content.text-body > div.id-app-orig-desc").text());
 
         apkFile.setSimilarAppsUrl(doc.select("div > div.details > h2 > a").stream().map(similarUrl -> Constants.GOOGLEPLAY_COM + similarUrl.attr("href")).collect(Collectors.toList()));
+        apkFile.setPrice(doc.select("#body-content > div.outer-container > div > div.main-content > div:nth-child(1) > div > div.details-info > div.info-container > div.details-actions > span > span > button > span:nth-child(3)").text());
 
         return apkFile;
     }
@@ -67,9 +71,14 @@ public class ProducerLinks implements Runnable {
             APK_LOG.info(String.format("Similar apps size = %s", similarUrls.size()));
 
             for (String url : similarUrls) { //new unique link
-                allApk.add(getInfoAboutApkFrom(url));
-                allApkUrls.add(url);
-                APK_LOG.info(String.format("Got information about similar app from %s", url));
+                ApkFile similarApkFile = getInfoAboutApkFrom(url);
+                if (similarApkFile.getPrice().equals("Install")) {
+                    allApk.add(similarApkFile);
+                    allApkUrls.add(url);
+                    APK_LOG.info(String.format("Got information about similar app from %s", url));
+                }else{
+                    APK_LOG.info(String.format("Similar app isn' free. %s;", url));
+                }
             }
         }
 
@@ -108,11 +117,12 @@ public class ProducerLinks implements Runnable {
                     }
 
                     APK_LOG.info(String.format("Got %s applications from Main page. Category: %s", elements.size(), category));
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            getApkFiles(elements, 3);
+            getApkFiles(elements, 5);
 
             APK_LOG.info(String.format("FINAL RESULT: Got %s applications from '%s' category", linksFromCategory, category));
         }

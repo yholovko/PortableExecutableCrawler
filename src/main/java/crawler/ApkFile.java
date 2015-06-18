@@ -14,9 +14,18 @@ public class ApkFile {
     private String sha256 = "";
 
     private List<String> similarAppsUrl;
+    private String price = "";
 
     public List<String> getSimilarAppsUrl() {
         return similarAppsUrl;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public void setSimilarAppsUrl(List<String> similarAppsUrl) {

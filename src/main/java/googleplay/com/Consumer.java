@@ -1,8 +1,10 @@
 package googleplay.com;
 
 import crawler.ApkFile;
+import crawler.Constants;
 import crawler.Database;
 import crawler.MyLinkedBlockingQueue;
+import de.onyxbits.raccoon.CliService;
 import org.apache.log4j.Logger;
 
 import java.io.File;
@@ -17,11 +19,6 @@ public class Consumer implements Runnable {
 
     public Consumer(MyLinkedBlockingQueue<ApkFile> goldenLinks) {
         this.goldenLinks = goldenLinks;
-    }
-
-    private boolean saveApk(String packageName) {
-
-        return false;
     }
 
     private String hashFile(File file, String algorithm) {
@@ -75,9 +72,14 @@ public class Consumer implements Runnable {
 
                     String packageName = apkFile.getUrl().replaceAll("https:\\//play.google.com/store/apps/details\\?id=", "");
 
-                    if (saveApk(packageName)) {
+                    String[] args = {"-i", packageName, "-u", "-a", Constants.LOCATION_TO_FILES_SAVING_APK};
+
+                    CliService cs = new CliService(args, APK_LOG);
+                    cs.run();
+
+                    if (cs.getStatus().equals("[DOWNLOADED]")){
                         APK_LOG.info("File " + apkFile.getUrl() + " downloaded");
-                        //apkFile.setLocation(Constants.LOCATION_TO_FILES_SAVING_PE + filename);
+                        apkFile.setLocation(cs.getFileLocation());
 
                         File file = new File(apkFile.getLocation());
                         apkFile.setMd5(generateMD5(file));
