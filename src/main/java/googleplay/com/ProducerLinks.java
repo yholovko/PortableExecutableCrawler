@@ -71,13 +71,13 @@ public class ProducerLinks implements Runnable {
             APK_LOG.info(String.format("Similar apps size = %s", similarUrls.size()));
 
             for (String url : similarUrls) { //new unique link
-                ApkFile similarApkFile = getInfoAboutApkFrom(url);
+                ApkFile similarApkFile = getInfoAboutApkFrom(url.replaceAll(Constants.GOOGLEPLAY_COM,""));
                 if (similarApkFile.getPrice().equals("Install")) {
                     allApk.add(similarApkFile);
                     allApkUrls.add(url);
                     APK_LOG.info(String.format("Got information about similar app from %s", url));
                 }else{
-                    APK_LOG.info(String.format("Similar app isn' free. %s;", url));
+                    APK_LOG.info(String.format("Similar app isn't free. %s; %s", url, similarApkFile.getPrice()));
                 }
             }
         }
