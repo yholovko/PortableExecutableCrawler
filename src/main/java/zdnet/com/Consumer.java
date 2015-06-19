@@ -31,6 +31,7 @@ public class Consumer implements Runnable {
 
         try (FileOutputStream fos = new FileOutputStream(Constants.LOCATION_TO_FILES_SAVING_PE + fileName)) {
             URLConnection conn = download.openConnection();
+            conn.setConnectTimeout(10 * 60 * 1000);
             conn.setReadTimeout(10 * 60 * 1000); //10 min
 
             ReadableByteChannel rbc = Channels.newChannel(conn.getInputStream());
@@ -140,6 +141,7 @@ public class Consumer implements Runnable {
                                     ZD_NET_LOG.info(String.format("Information about %s inserted in the database", pe.getUrl()));
                                 }
                             } else {
+                                new File(pe.getLocation()).delete();
                                 ZD_NET_LOG.error("Error while downloading file " + pe.getUrl());
                             }
                         } else { // not the PE file. The 'download' button is redirect to Google Play, Amazon, Apple Store etc....

@@ -54,7 +54,7 @@ public class ProducerLinks implements Runnable {
         for (Element link : elements) {
             allApk.add(getInfoAboutApkFrom(link.attr("href")));
             allApkUrls.add(Constants.GOOGLEPLAY_COM + link.attr("href"));
-            APK_LOG.info(String.format("[%s-%s]. Got information from %s", allApk.size(), elements.size(), Constants.GOOGLEPLAY_COM + link.attr("href")));
+            APK_LOG.info(String.format("[%s-%s]. Got information from %s; <QUEUE>: %s;", allApk.size(), elements.size(), Constants.GOOGLEPLAY_COM + link.attr("href"), goldenLinks.size()));
         }
 
         for (int i = 0; i < deepForSimilarApp; i++) {

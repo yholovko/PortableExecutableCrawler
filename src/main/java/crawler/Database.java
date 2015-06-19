@@ -44,6 +44,7 @@ public class Database {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            ZD_NET_LOG.error(e);
             C_NET_LOG.error(e);
         }
         return false;

@@ -73,14 +73,37 @@ public class Main {
         writer.close();
 
         if (checkDatabaseConnection()) {
-            Thread zdNetThread = new Thread(new ZDNet());
-            zdNetThread.start();
+            if (args.length == 11) {
+                switch (args[10]) {
+                    case "1":
+                        System.out.println("Started only ZDNET crawler");
+                        Thread zdNetThread = new Thread(new ZDNet());
+                        zdNetThread.start();
+                        break;
+                    case "2":
+                        System.out.println("Started only CNET crawler");
+                        Thread cNetThread = new Thread(new CNet());
+                        cNetThread.start();
+                        break;
+                    case "3":
+                        System.out.println("Started only GOOGLE PLAY crawler");
+                        Thread googlePlayThread = new Thread(new GooglePlay());
+                        googlePlayThread.start();
+                        break;
+                    default:
+                        System.out.println("Choose a correct value in the command line. 1 - ZDNET.COM; 2 - CNET.COM; 3 - GOOGLE PLAY;");
+                        break;
+                }
+            } else {
+                Thread zdNetThread = new Thread(new ZDNet());
+                zdNetThread.start();
 
-            Thread cNetThread = new Thread(new CNet());
-            cNetThread.start();
+                Thread cNetThread = new Thread(new CNet());
+                cNetThread.start();
 
-            Thread googlePlayThread = new Thread(new GooglePlay());
-            googlePlayThread.start();
+                Thread googlePlayThread = new Thread(new GooglePlay());
+                googlePlayThread.start();
+            }
         }
     }
 }

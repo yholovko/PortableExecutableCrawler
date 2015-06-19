@@ -74,33 +74,39 @@ public class Consumer implements Runnable {
 
                     String[] args = {"-i", packageName, "-u", "-a", Constants.LOCATION_TO_FILES_SAVING_APK};
 
-                    CliService cs = new CliService(args, APK_LOG);
-                    cs.run();
+                    try {
+                        CliService cs = new CliService(args, APK_LOG);
+                        cs.run();
 
-                    if (cs.getStatus().equals("[DOWNLOADED]")){
-                        APK_LOG.info("File " + apkFile.getUrl() + " downloaded");
-                        apkFile.setLocation(cs.getFileLocation());
+                        if (cs.getStatus().equals("[DOWNLOADED]")){
+                            APK_LOG.info("File " + apkFile.getUrl() + " downloaded");
+                            apkFile.setLocation(cs.getFileLocation());
 
-                        File file = new File(apkFile.getLocation());
-                        apkFile.setMd5(generateMD5(file));
-                        apkFile.setSha1(generateSHA1(file));
-                        apkFile.setSha256(generateSHA256(file));
+                            File file = new File(apkFile.getLocation());
+                            apkFile.setMd5(generateMD5(file));
+                            apkFile.setSha1(generateSHA1(file));
+                            apkFile.setSha256(generateSHA256(file));
 
-                        if (Database.isAppExistsAPK(apkFile.getMd5())) {
-                            new File(apkFile.getLocation()).delete();
-                            APK_LOG.info(String.format("File %s already in the database. Deleted", apkFile.getUrl()));
+                            if (Database.isAppExistsAPK(apkFile.getMd5())) {
+                                new File(apkFile.getLocation()).delete();
+                                APK_LOG.info(String.format("File %s already in the database. Deleted", apkFile.getUrl()));
+                            } else {
+                                Database.insertToDatabaseAPK(apkFile);
+                                APK_LOG.info(String.format("Information about %s inserted in the database", apkFile.getUrl()));
+                            }
                         } else {
-                            Database.insertToDatabaseAPK(apkFile);
-                            APK_LOG.info(String.format("Information about %s inserted in the database", apkFile.getUrl()));
+                            APK_LOG.error(String.format("Error while downloading file %s. Package name: %s", apkFile.getUrl(), packageName));
                         }
-                    } else {
-                        APK_LOG.error(String.format("Error while downloading file %s. Package name: %s", apkFile.getUrl(), packageName));
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        APK_LOG.error(e);
                     }
-
                 } else {
+                    APK_LOG.info("LAST ELEMENT");
                     return; //last element
                 }
             } catch (InterruptedException e) {
+                e.printStackTrace();
                 APK_LOG.error(e);
             }
         }
