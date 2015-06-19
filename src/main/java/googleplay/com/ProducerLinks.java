@@ -75,7 +75,7 @@ public class ProducerLinks implements Runnable {
                 if (similarApkFile.getPrice().equals("Install")) {
                     allApk.add(similarApkFile);
                     allApkUrls.add(url);
-                    APK_LOG.info(String.format("Got information about similar app from %s", url));
+                    APK_LOG.info(String.format("Got information about similar app from %s; <QUEUE>: %s", url, goldenLinks.size()));
                 }else{
                     APK_LOG.info(String.format("Similar app isn't free. %s; %s", url, similarApkFile.getPrice()));
                 }
