@@ -141,7 +141,7 @@ public class Consumer implements Runnable {
                                 pe.setSha1(generateSHA1(file));
                                 pe.setSha256(generateSHA256(file));
 
-                                if (Database.isAppExistsPE(pe.getMd5())) {
+                                if (Database.isAppExistsPE(pe.getMd5(), pe.getSha1(), pe.getSha256())) {
                                     new File(pe.getLocation()).delete();
                                     C_NET_LOG.info(String.format("File %s already in the database. Deleted", pe.getUrl()));
                                 } else {

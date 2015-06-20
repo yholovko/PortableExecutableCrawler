@@ -31,10 +31,12 @@ public class Database {
         return false;
     }
 
-    public static boolean isAppExistsPE(String md5) {
-        String sql = "SELECT count(id) FROM pe_file WHERE md5=?";
+    public static boolean isAppExistsPE(String md5, String sha1, String sha256) {
+        String sql = "SELECT count(id) FROM pe_file WHERE md5=? AND sha1=? AND sha256=?";
         try (Connection conn = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s", Constants.DB_HOST, Constants.DB_PORT, Constants.DB_NAME), Constants.DB_USER, Constants.DB_PASSWORD); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, md5);
+            ps.setString(2, sha1);
+            ps.setString(3, sha256);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     if (rs.getInt("count(id)") > 0) {
