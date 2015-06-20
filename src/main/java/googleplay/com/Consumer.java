@@ -79,7 +79,7 @@ public class Consumer implements Runnable {
                         cs.run();
 
                         if (cs.getStatus().equals("[DOWNLOADED]")){
-                            APK_LOG.info("File " + apkFile.getUrl() + " downloaded");
+                            APK_LOG.info(String.format("File " + apkFile.getUrl() + " downloaded. <QUEUE>: %s;", goldenLinks.size()));
                             apkFile.setLocation(cs.getFileLocation());
 
                             File file = new File(apkFile.getLocation());
@@ -102,7 +102,7 @@ public class Consumer implements Runnable {
                         APK_LOG.error(e);
                     }
                 } else {
-                    APK_LOG.info("LAST ELEMENT");
+                    APK_LOG.info("LAST ELEMENT DOWNLOADED. THANK YOU");
                     return; //last element
                 }
             } catch (InterruptedException e) {

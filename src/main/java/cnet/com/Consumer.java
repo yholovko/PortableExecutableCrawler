@@ -157,6 +157,7 @@ public class Consumer implements Runnable {
                         }
                     }
                 } else {
+                    C_NET_LOG.info("LAST ELEMENT DOWNLOADED. THANK YOU");
                     return; //last element
                 }
             } catch (InterruptedException | MalformedURLException e) {

@@ -128,6 +128,7 @@ public class ProducerLinks implements Runnable {
         }
         try {
             goldenLinks.put(new ApkFile()); // LAST ELEMENT. 'Consumer' thread will stopped.
+            APK_LOG.info("Finish. Last category.");
         } catch (InterruptedException e) {
             APK_LOG.error(e);
         }

@@ -22,7 +22,6 @@ public class ProducerLinks implements Runnable {
         PortableExecutableFile pe = new PortableExecutableFile();
 
         String peUrl = link.select("div > h3 > a:nth-child(1)").attr("href");
-
         Document doc = ZDNet.connectTo(Constants.ZD_NET_COM + peUrl);
 
         if (doc != null) {
@@ -96,9 +95,10 @@ public class ProducerLinks implements Runnable {
                         String nextPageUrl = doc.select("#mantle_skin > div.contentWrapper > div > div > div.col-8 > div.row > div.col-6 > section > nav > ul > li").last().child(0).attr("href");
                         doc = ZDNet.connectTo(Constants.ZD_NET_COM + nextPageUrl);
 
-                        ZD_NET_LOG.info("\n\n" + Constants.ZD_NET_COM_DOWNLOAD + nextPageUrl);
+                        ZD_NET_LOG.info("\n\n" + Constants.ZD_NET_COM + nextPageUrl);
                     } else {
                         goldenLinks.put(new PortableExecutableFile()); // LAST PAGE. 'Consumer' thread will stopped.
+                        ZD_NET_LOG.info("\n\n Finish. Last page.");
                         break;
                     }
                 } else {

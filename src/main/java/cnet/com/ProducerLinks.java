@@ -25,7 +25,6 @@ public class ProducerLinks implements Runnable {
 
         Document doc = CNet.connectTo(peUrl);
 
-
         if (doc != null) {
             pe.setUrl(peUrl);
             pe.setName(doc.select("#content-body-product-single > h1 > span").text());
@@ -70,6 +69,7 @@ public class ProducerLinks implements Runnable {
 
             for (String category : Constants.CATEGORIES_CNET) {
                 Document doc = CNet.connectTo(category); //select directory
+
                 while (true) {
                     if (doc != null) {
                         Elements links = doc.select("#listing-product-list > li > div.result-info > div.result-name > a");
@@ -87,7 +87,6 @@ public class ProducerLinks implements Runnable {
 
                             C_NET_LOG.info("\n\n" + Constants.CNET_COM + nextPageUrl);
                         } else {
-                            goldenLinks.put(new PortableExecutableFile()); // LAST PAGE. 'Consumer' thread will stopped.
                             break;
                         }
                     } else {
@@ -95,7 +94,8 @@ public class ProducerLinks implements Runnable {
                     }
                 }
             }
-
+            goldenLinks.put(new PortableExecutableFile()); // LAST PAGE. 'Consumer' thread will stopped.
+            C_NET_LOG.info("\n\n Finish. Last category");
         } catch (InterruptedException e) {
             e.printStackTrace();
             C_NET_LOG.error(e);
