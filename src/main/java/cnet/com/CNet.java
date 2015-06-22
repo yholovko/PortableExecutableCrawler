@@ -21,14 +21,16 @@ public class CNet implements Runnable {
                 doc = Jsoup.connect(url).get();
             } catch (IOException e) {
                 if (e instanceof HttpStatusException) {
-                    if (((HttpStatusException) e).getStatusCode() == 404) {
-                        C_NET_LOG.warn(String.format("Page not found 404. %s", url));
-                        return null;
-                    }
-                    if (((HttpStatusException) e).getStatusCode() == 500) {
-                        C_NET_LOG.warn(String.format("HTTP error fetching URL. %s", url));
-                        return null;
-                    }
+                    C_NET_LOG.warn("HttpStatusException" + e.toString());
+                    return null;
+//                    if (((HttpStatusException) e).getStatusCode() == 404) {
+//                        C_NET_LOG.warn(String.format("Page not found 404. %s", url));
+//                        return null;
+//                    }
+//                    if (((HttpStatusException) e).getStatusCode() == 500) {
+//                        C_NET_LOG.warn(String.format("HTTP error fetching URL. %s", url));
+//                        return null;
+//                    }
                 }
 
                 C_NET_LOG.warn(String.format("Reconnection to %s", url));

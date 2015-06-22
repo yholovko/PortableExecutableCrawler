@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2a62a7e1-d1a4-4b81-b319-a8fac51312f6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cnet/com/CNet.java" afterPath="$PROJECT_DIR$/src/main/java/cnet/com/CNet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cnet/com/ProducerLinks.java" afterPath="$PROJECT_DIR$/src/main/java/cnet/com/ProducerLinks.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/zdnet/com/ZDNet.java" afterPath="$PROJECT_DIR$/src/main/java/zdnet/com/ZDNet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -53,54 +52,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/crawler/Database.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="78" column="45" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
+              <folding>
+                <marker date="1434763200860" expanded="true" signature="410:465" placeholder="SELECT count..pe_file..." />
+                <marker date="1434763200860" expanded="true" signature="1302:1367" placeholder="SELECT count..pe_file..." />
+                <marker date="1434763200860" expanded="true" signature="2227:2437" placeholder="INSERT INTO ..." />
+                <marker date="1434763200860" expanded="true" signature="3544:3600" placeholder="SELECT count..apk_file..." />
+                <marker date="1434763200860" expanded="true" signature="4382:4530" placeholder="INSERT INTO ..." />
+                <marker date="1434763200860" expanded="true" signature="5461:5503" placeholder="SELECT count..apk_file..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="CNet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cnet/com/CNet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="30" selection-end-column="21" />
+              <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZDNet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ZDNet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/zdnet/com/ZDNet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="91" selection-start-line="54" selection-start-column="91" selection-end-line="54" selection-end-column="91" />
+            <state vertical-scroll-proportion="0.4907621">
+              <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProducerLinks.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cnet/com/ProducerLinks.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2944573">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Consumer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cnet/com/Consumer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PortableExecutableFile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/crawler/PortableExecutableFile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding>
-                <element signature="e#613#614#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -145,9 +129,9 @@
         <option value="$PROJECT_DIR$/src/main/java/googleplay/com/Consumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/cnet/com/Consumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/zdnet/com/Consumer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cnet/com/ProducerLinks.java" />
         <option value="$PROJECT_DIR$/src/main/java/cnet/com/CNet.java" />
         <option value="$PROJECT_DIR$/src/main/java/zdnet/com/ZDNet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cnet/com/ProducerLinks.java" />
       </list>
     </option>
   </component>
@@ -799,7 +783,7 @@
       <workItem from="1434812856760" duration="4898000" />
       <workItem from="1434838198193" duration="162000" />
       <workItem from="1434916226365" duration="1615000" />
-      <workItem from="1434994368275" duration="2089000" />
+      <workItem from="1434994368275" duration="3053000" />
     </task>
     <task id="LOCAL-00001" summary="final version. Without testing. Added consumer for google crawler">
       <created>1434591483809</created>
@@ -867,11 +851,17 @@
       <option name="project" value="LOCAL" />
       <updated>1434837343292</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fix CNET &amp; ZDNET bug. Added handler for status code = 500 (HTTP error fetching URL)">
+      <created>1434998340146</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1434998340146</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130771000" />
+    <option name="totallyTimeSpent" value="131735000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -925,7 +915,8 @@
     <MESSAGE value="added log for APK file + changed db schema" />
     <MESSAGE value="added new check for hash" />
     <MESSAGE value="fix CNET bug; added more logs for Google, Cnet and Zdnet crawlers" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix CNET bug; added more logs for Google, Cnet and Zdnet crawlers" />
+    <MESSAGE value="fix CNET &amp; ZDNET bug. Added handler for status code = 500 (HTTP error fetching URL)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix CNET &amp; ZDNET bug. Added handler for status code = 500 (HTTP error fetching URL)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -950,22 +941,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/crawler/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="82" selection-start-line="19" selection-start-column="82" selection-end-line="19" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/crawler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1225,14 +1200,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/crawler/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/crawler/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33256352">
@@ -1305,26 +1272,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cnet/com/ProducerLinks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5692841">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/crawler/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="45" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
+          <folding>
+            <marker date="1434763200860" expanded="true" signature="410:465" placeholder="SELECT count..pe_file..." />
+            <marker date="1434763200860" expanded="true" signature="1302:1367" placeholder="SELECT count..pe_file..." />
+            <marker date="1434763200860" expanded="true" signature="2227:2437" placeholder="INSERT INTO ..." />
+            <marker date="1434763200860" expanded="true" signature="3544:3600" placeholder="SELECT count..apk_file..." />
+            <marker date="1434763200860" expanded="true" signature="4382:4530" placeholder="INSERT INTO ..." />
+            <marker date="1434763200860" expanded="true" signature="5461:5503" placeholder="SELECT count..apk_file..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.8.2/jsoup-1.8.2.jar!/org/jsoup/HttpStatusException.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7777777">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/Throwable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33256352">
+          <caret line="477" column="18" selection-start-line="477" selection-start-column="18" selection-end-line="477" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cnet/com/CNet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="30" selection-end-column="21" />
+          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/zdnet/com/ZDNet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="91" selection-start-line="54" selection-start-column="91" selection-end-line="54" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cnet/com/ProducerLinks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2944573">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4907621">
+          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
           <folding />
         </state>
       </provider>
