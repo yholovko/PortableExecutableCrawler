@@ -77,10 +77,11 @@ public class Database {
     }
 
     public static boolean containsUrlAndVersionApk(String url, String version) {
-        String sql = "SELECT count(id) FROM apk_file WHERE url=? AND version=?";
+        String sql = "SELECT count(id) FROM apk_file WHERE url=? AND version=? AND version!=?";
         try (Connection conn = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s", Constants.DB_HOST, Constants.DB_PORT, Constants.DB_NAME), Constants.DB_USER, Constants.DB_PASSWORD); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, url);
             ps.setString(2, version);
+            ps.setString(3, "Varies with device");
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     if (rs.getInt("count(id)") > 0) {
