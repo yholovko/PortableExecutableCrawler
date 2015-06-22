@@ -5,10 +5,9 @@ import crawler.PortableExecutableFile;
 import org.apache.log4j.Logger;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.IOException;
-
-import org.jsoup.nodes.Document;
 
 public class CNet implements Runnable {
     static final Logger C_NET_LOG = Logger.getLogger("cNetLogger");
@@ -24,6 +23,10 @@ public class CNet implements Runnable {
                 if (e instanceof HttpStatusException) {
                     if (((HttpStatusException) e).getStatusCode() == 404) {
                         C_NET_LOG.warn(String.format("Page not found 404. %s", url));
+                        return null;
+                    }
+                    if (((HttpStatusException) e).getStatusCode() == 500) {
+                        C_NET_LOG.warn(String.format("HTTP error fetching URL. %s", url));
                         return null;
                     }
                 }

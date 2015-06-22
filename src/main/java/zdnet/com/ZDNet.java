@@ -51,6 +51,10 @@ public class ZDNet implements Runnable {
                         ZD_NET_LOG.warn(String.format("Page not found 404. %s", url));
                         return null;
                     }
+                    if (((HttpStatusException) e).getStatusCode() == 500) {
+                        ZD_NET_LOG.warn(String.format("HTTP error fetching URL. %s", url));
+                        return null;
+                    }
                 }
 
                 ZD_NET_LOG.warn(String.format("Reconnection to %s", url));
