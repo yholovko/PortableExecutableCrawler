@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `pe_file` (
   `sha1` varchar(40) NOT NULL,
   `sha256` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `apk_file` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -30,4 +30,4 @@ CREATE TABLE IF NOT EXISTS `apk_file` (
   `sha1` varchar(40) NOT NULL,
   `sha256` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

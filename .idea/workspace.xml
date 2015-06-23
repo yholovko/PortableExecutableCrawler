@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a62a7e1-d1a4-4b81-b319-a8fac51312f6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java" afterPath="$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apk_pe_db.sql" afterPath="$PROJECT_DIR$/apk_pe_db.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -65,7 +64,7 @@
       <file leaf-file-name="ProducerLinks.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47113165">
+            <state vertical-scroll-proportion="0.35219398">
               <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding>
                 <element signature="e#785#786#0" expanded="true" />
@@ -752,7 +751,7 @@
       <workItem from="1434812856760" duration="4898000" />
       <workItem from="1434838198193" duration="162000" />
       <workItem from="1434916226365" duration="1615000" />
-      <workItem from="1434994368275" duration="16814000" />
+      <workItem from="1434994368275" duration="16850000" />
     </task>
     <task id="LOCAL-00001" summary="final version. Without testing. Added consumer for google crawler">
       <created>1434591483809</created>
@@ -838,15 +837,21 @@
       <option name="project" value="LOCAL" />
       <updated>1435000602203</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="optimize algorithm for Google Crawler">
+      <created>1435019171401</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1435019171401</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145496000" />
+    <option name="totallyTimeSpent" value="145532000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -899,7 +904,8 @@
     <MESSAGE value="fix CNET &amp; ZDNET bug. Added handler for status code = 500 (HTTP error fetching URL)" />
     <MESSAGE value="fix CNET &amp; ZDNET bug. Added handler for all status codes." />
     <MESSAGE value="download apk file with 'varies with device' version (only for Google Crawler)" />
-    <option name="LAST_COMMIT_MESSAGE" value="download apk file with 'varies with device' version (only for Google Crawler)" />
+    <MESSAGE value="optimize algorithm for Google Crawler" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimize algorithm for Google Crawler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1311,7 +1317,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47113165">
+        <state vertical-scroll-proportion="0.35219398">
           <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
           <folding>
             <element signature="e#785#786#0" expanded="true" />
