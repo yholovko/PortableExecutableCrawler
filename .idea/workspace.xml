@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a62a7e1-d1a4-4b81-b319-a8fac51312f6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java" afterPath="$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/googleplay/com/Consumer.java" afterPath="$PROJECT_DIR$/src/main/java/googleplay/com/Consumer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/crawler/Main.java" afterPath="$PROJECT_DIR$/src/main/java/crawler/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PortableExecutableCrawler.iws" />
@@ -51,44 +52,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GooglePlay.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/GooglePlay.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="104" selection-start-line="37" selection-start-column="104" selection-end-line="37" selection-end-column="104" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/crawler/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProducerLinks.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25404158">
-              <caret line="111" column="106" selection-start-line="111" selection-start-column="106" selection-end-line="111" selection-end-column="106" />
-              <folding>
-                <element signature="e#832#833#0" expanded="true" />
-                <element signature="e#878#879#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Consumer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/Consumer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="93" column="48" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.4699769">
+              <caret line="70" column="64" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -125,9 +93,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/crawler/Constants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/crawler/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/zdnet/com/ProducerLinks.java" />
-        <option value="$PROJECT_DIR$/src/main/java/googleplay/com/Consumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/cnet/com/Consumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/zdnet/com/Consumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/cnet/com/ProducerLinks.java" />
@@ -137,6 +103,8 @@
         <option value="$PROJECT_DIR$/apk_pe_db.sql" />
         <option value="$PROJECT_DIR$/src/main/java/googleplay/com/GooglePlay.java" />
         <option value="$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java" />
+        <option value="$PROJECT_DIR$/src/main/java/googleplay/com/Consumer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/crawler/Main.java" />
       </list>
     </option>
   </component>
@@ -364,6 +332,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PortableExecutableCrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PortableExecutableCrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PortableExecutableCrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PortableExecutableCrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -547,7 +555,7 @@
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="JAR_PATH" value="$PROJECT_DIR$/target/PEandAPKCrawlers-1.0-jar-with-dependencies.jar" />
+      <option name="JAR_PATH" value="$PROJECT_DIR$/lib/raccoon-3.5-jar-with-dependencies.jar" />
       <envs />
       <method />
     </configuration>
@@ -748,7 +756,7 @@
       <workItem from="1434812856760" duration="4898000" />
       <workItem from="1434838198193" duration="162000" />
       <workItem from="1434916226365" duration="1615000" />
-      <workItem from="1434994368275" duration="18632000" />
+      <workItem from="1434994368275" duration="19924000" />
     </task>
     <task id="LOCAL-00001" summary="final version. Without testing. Added consumer for google crawler">
       <created>1434591483809</created>
@@ -846,11 +854,17 @@
       <option name="project" value="LOCAL" />
       <updated>1435019212988</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fixed &quot;cannot call method 'click' of null&quot; exception">
+      <created>1435021998745</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1435021998745</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147314000" />
+    <option name="totallyTimeSpent" value="148606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -909,24 +923,18 @@
     <MESSAGE value="download apk file with 'varies with device' version (only for Google Crawler)" />
     <MESSAGE value="optimize algorithm for Google Crawler" />
     <MESSAGE value="change utf8 to utf8mb4 (in the database)" />
-    <option name="LAST_COMMIT_MESSAGE" value="change utf8 to utf8mb4 (in the database)" />
+    <MESSAGE value="fixed &quot;cannot call method 'click' of null&quot; exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed &quot;cannot call method 'click' of null&quot; exception" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cnet/com/Consumer.java</url>
-          <line>118</line>
-          <properties />
-          <option name="timeStamp" value="92" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="103" />
+      <option name="time" value="105" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="goldenLinks.size()" language="JAVA" custom="" />
         <watch expression="similarApkFile.getPrice()" language="JAVA" custom="" />
+        <watch expression="file.getParentFile()" language="JAVA" custom="" />
       </configuration>
     </watches-manager>
   </component>
@@ -935,21 +943,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/crawler/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/GooglePlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1213,14 +1206,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cnet/com/Consumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cnet/com/ProducerLinks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5692841">
@@ -1276,14 +1261,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/Consumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="48" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-htmlunit-driver/2.46.0/selenium-htmlunit-driver-2.46.0.jar!/org/openqa/selenium/htmlunit/HtmlUnitDriver.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3432658">
@@ -1300,11 +1277,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/crawler/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
-          <folding />
+          <caret line="111" column="106" selection-start-line="111" selection-start-column="106" selection-end-line="111" selection-end-column="106" />
+          <folding>
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#878#879#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1316,14 +1296,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/ProducerLinks.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/System.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25404158">
-          <caret line="111" column="106" selection-start-line="111" selection-start-column="106" selection-end-line="111" selection-end-column="106" />
+        <state vertical-scroll-proportion="0.35219398">
+          <caret line="647" column="25" selection-start-line="647" selection-start-column="25" selection-end-line="647" selection-end-column="25" />
           <folding>
-            <element signature="e#832#833#0" expanded="true" />
-            <element signature="e#878#879#0" expanded="true" />
+            <element signature="e#26565#26566#0" expanded="true" />
+            <element signature="e#26601#26602#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cnet/com/Consumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/credentials.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/googleplay/com/Consumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41108546">
+          <caret line="77" column="82" selection-start-line="77" selection-start-column="82" selection-end-line="77" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/crawler/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4699769">
+          <caret line="70" column="64" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>

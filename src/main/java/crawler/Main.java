@@ -5,7 +5,6 @@ import googleplay.com.GooglePlay;
 import org.apache.log4j.PropertyConfigurator;
 import zdnet.com.ZDNet;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -56,15 +55,7 @@ public class Main {
             Constants.LOCATION_TO_FILES_SAVING_APK += "\\";
         }
 
-        //create file with credentials
-        File file = new File(Constants.LOCATION_TO_FILES_SAVING_APK+"credentials.cfg");
-        if (file.exists()){
-            file.delete();
-        }
-        file.getParentFile().mkdirs();
-        file.createNewFile();
-
-        PrintWriter writer = new PrintWriter(file, "UTF-8");
+        PrintWriter writer = new PrintWriter("credentials.cfg", "UTF-8");
         writer.println("androidid=" + Constants.ANDROID_ID);
         writer.println("userid=" + Constants.email);
         writer.println("password=" + Constants.password);

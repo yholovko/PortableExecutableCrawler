@@ -75,6 +75,7 @@ public class Consumer implements Runnable {
                     String[] args = {"-i", packageName, "-u", "-a", Constants.LOCATION_TO_FILES_SAVING_APK};
 
                     try {
+                        new File(Constants.LOCATION_TO_FILES_SAVING_APK).mkdirs();
                         CliService cs = new CliService(args, APK_LOG);
                         cs.run();
 
