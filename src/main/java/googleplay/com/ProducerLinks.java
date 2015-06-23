@@ -10,6 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import java.util.ArrayList;
@@ -107,8 +108,12 @@ public class ProducerLinks implements Runnable {
             while (true) {
                 try {
                     Thread.sleep(1000);
-                    ((HtmlUnitDriver) driver).executeScript("document.getElementById('show-more-button').click()", new Object[]{""});
-                    Thread.sleep(7000);
+                    try {
+                        ((HtmlUnitDriver) driver).executeScript("document.getElementById('show-more-button').click()", new Object[]{""});
+                    }catch (WebDriverException e){
+                        APK_LOG.error(e);
+                    }
+                    Thread.sleep(6000);
 
                     Document doc = Jsoup.parse(driver.getPageSource());
                     elements = doc.select("div > div.details > h2 > a");
