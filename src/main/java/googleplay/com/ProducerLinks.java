@@ -52,44 +52,46 @@ public class ProducerLinks implements Runnable {
         Set<String> similarUrls = new HashSet<>();
 
         for (Element link : elements) {
-            allApk.add(getInfoAboutApkFrom(link.attr("href")));
+            ApkFile apkFile = getInfoAboutApkFrom(link.attr("href"));
+            allApk.add(apkFile);
             allApkUrls.add(Constants.GOOGLEPLAY_COM + link.attr("href"));
             APK_LOG.info(String.format("[%s-%s]. Got information from %s; <QUEUE>: %s;", allApk.size(), elements.size(), Constants.GOOGLEPLAY_COM + link.attr("href"), goldenLinks.size()));
-        }
 
-        for (int i = 0; i < deepForSimilarApp; i++) {
-            int simSize = similarUrls.size();
-            similarUrls.clear();
-
-            for (int k = simSize == 0 ? 0 : (allApk.size() - simSize + 1); k < allApk.size(); k++) {
-                similarUrls.addAll(allApk.get(k).getSimilarAppsUrl());
-            }
-
-            APK_LOG.info(String.format("Similar apps size = %s", similarUrls.size()));
-            similarUrls.removeAll(allApkUrls); //remove all links that have been added from MainPage)
-            APK_LOG.info("Remove all links that have been added from MainPage...");
-            APK_LOG.info(String.format("Similar apps size = %s", similarUrls.size()));
-
-            for (String url : similarUrls) { //new unique link
-                ApkFile similarApkFile = getInfoAboutApkFrom(url.replaceAll(Constants.GOOGLEPLAY_COM,""));
-                if (similarApkFile.getPrice().equals("Install")) {
-                    allApk.add(similarApkFile);
-                    allApkUrls.add(url);
-                    APK_LOG.info(String.format("Got information about similar app from %s; <QUEUE>: %s", url, goldenLinks.size()));
-                }else{
-                    APK_LOG.info(String.format("Similar app isn't free. %s; %s", url, similarApkFile.getPrice()));
-                }
-            }
-        }
-
-        for (ApkFile apkFile : allApk) {
             if (!Database.containsUrlAndVersionApk(apkFile.getUrl(), apkFile.getVersion())) {
                 goldenLinks.add(apkFile);
-                APK_LOG.info(String.format("[NEW] The APK file %s is added to processing", apkFile.getUrl()));
+                APK_LOG.info(String.format("[NEW] The APK file %s is added to processing; <QUEUE>: %s;", apkFile.getUrl(), goldenLinks.size()));
             } else {
                 APK_LOG.info(String.format("File %s already in the database", apkFile.getUrl()));
             }
         }
+
+        int simSize = 0;
+        for (int i = 0; i < deepForSimilarApp; i++) {
+            int kLimit = allApk.size();
+            for (int k = simSize == 0 ? 0 : (kLimit - simSize + 1); k < kLimit; k++) {
+                similarUrls.addAll(allApk.get(k).getSimilarAppsUrl());
+                similarUrls.removeAll(allApkUrls); //remove all links that have been added from MainPage)
+
+                for (String url : similarUrls) {
+                    ApkFile similarApkFile = getInfoAboutApkFrom(url.replaceAll(Constants.GOOGLEPLAY_COM, ""));
+                    if (similarApkFile.getPrice().equals("Install")) {
+                        if (!Database.containsUrlAndVersionApk(similarApkFile.getUrl(), similarApkFile.getVersion())) {
+                            allApk.add(similarApkFile);
+                            allApkUrls.add(url);
+                            goldenLinks.add(similarApkFile);
+                            simSize++;
+                            APK_LOG.info(String.format("[NEW SIMILAR] The APK file %s is added to processing; <QUEUE>: %s;", similarApkFile.getUrl(), goldenLinks.size()));
+                        } else {
+                            APK_LOG.info(String.format("File %s already in the database", similarApkFile.getUrl()));
+                        }
+                    } else {
+                        APK_LOG.info(String.format("Similar app isn't free. %s; %s", url, similarApkFile.getPrice()));
+                    }
+                }
+                similarUrls.clear();
+            }
+        }
+
         linksFromCategory = allApk.size();
     }
 
@@ -104,6 +106,7 @@ public class ProducerLinks implements Runnable {
             Elements elements;
             while (true) {
                 try {
+                    Thread.sleep(1000);
                     ((HtmlUnitDriver) driver).executeScript("document.getElementById('show-more-button').click()", new Object[]{""});
                     Thread.sleep(7000);
 
@@ -117,7 +120,6 @@ public class ProducerLinks implements Runnable {
                     }
 
                     APK_LOG.info(String.format("Got %s applications from Main page. Category: %s", elements.size(), category));
-
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
