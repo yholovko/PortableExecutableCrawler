@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- mvn install:install-file -Dfile=C:\Users\Jacob\Documents\Projects\PortableExecutableCrawler\lib\raccoon-3.5-jar-with-dependencies.jar -DgroupId=de.onyxbits.raccoon -DartifactId=downloader -Dversion=3.5 -Dpackaging=jar -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.elance.crawler</groupId>
     <artifactId>PEandAPKCrawlers</artifactId>
     <version>1.0</version>

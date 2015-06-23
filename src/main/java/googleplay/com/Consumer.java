@@ -76,7 +76,7 @@ public class Consumer implements Runnable {
 
                     try {
                         new File(Constants.LOCATION_TO_FILES_SAVING_APK).mkdirs();
-                        CliService cs = new CliService(args, APK_LOG);
+                        CliService cs = new CliService(args);
                         cs.run();
 
                         if (cs.getStatus().equals("[DOWNLOADED]")){
@@ -88,15 +88,14 @@ public class Consumer implements Runnable {
                             apkFile.setSha1(generateSHA1(file));
                             apkFile.setSha256(generateSHA256(file));
 
-                            if (Database.isAppExistsAPK(apkFile.getMd5())) {
-                                new File(apkFile.getLocation()).delete();
-                                APK_LOG.info(String.format("File %s already in the database. Deleted", apkFile.getUrl()));
+                            if (Database.isAppExistsAPK(apkFile.getMd5(), apkFile.getSha1(), apkFile.getSha256())) {
+                                APK_LOG.info(String.format("File %s already in the database, but not present in the file system. Saving...", apkFile.getUrl()));
                             } else {
                                 Database.insertToDatabaseAPK(apkFile);
                                 APK_LOG.info(String.format("Information about %s inserted in the database", apkFile.getUrl()));
                             }
                         } else {
-                            APK_LOG.error(String.format("Error while downloading file %s. Package name: %s", apkFile.getUrl(), packageName));
+                            APK_LOG.error(String.format("Error while downloading file %s. Maybe, file stored locally with the same version", apkFile.getUrl()));
                         }
                     }catch (Exception e){
                         e.printStackTrace();
